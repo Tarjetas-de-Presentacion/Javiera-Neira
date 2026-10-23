@@ -5,43 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javiera Neira Encina - Tarjeta Digital</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: #f5f5f7; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 12px; }
-        .container { background: #ffffff; width: 100%; max-width: 390px; border-radius: 28px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 0 20px 24px 20px; position: relative; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        }
         
-        /* Linea superior corporativa (Verde Claro / Verde Oscuro / Gris Grafito) */
-        .top-bar { display: flex; height: 5px; width: 100%; margin: 12px 0 16px 0; border-radius: 3px; overflow: hidden; }
+        /* Contenedor principal ajustado al alto de pantalla del celular */
+        body { 
+            background-color: #f5f5f7; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            height: 100dvh; /* Dynamic Viewport Height para adaptarse a las barras de Safari/Chrome */
+            padding: 8px; 
+            overflow: hidden; /* Evita el scroll vertical */
+        }
 
-        .bar-1 { background-color: #4A4A4A; flex: 1; } /* Gris Grafito */
+        .container { 
+            background: #ffffff; 
+            width: 100%; 
+            max-width: 380px; 
+            max-height: 100dvh;
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            padding: 0 16px 14px 16px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* Línea superior corporativa Banco Falabella */
+        .top-bar { display: flex; height: 4px; width: 100%; margin: 8px 0 10px 0; border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+        .bar-1 { background-color: #80B900; flex: 2; } /* Verde Claro */
         .bar-2 { background-color: #006B33; flex: 1; } /* Verde Oscuro */
-        .bar-3 { background-color: #80B900; flex: 2; } /* Verde Claro */
+        .bar-3 { background-color: #4A4A4A; flex: 1; } /* Gris Grafito */
         
-        .card-header { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; position: relative; margin-bottom: 16px; }
+        .card-header { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 12px 14px; position: relative; margin-bottom: 8px; }
         
-        /* Contenedor del logo oficial */
-        .logo-wrapper { display: flex; justify-content: flex-end; margin-bottom: 12px; }
-        .logo-img { max-width: 140px; height: auto; display: block; object-fit: contain; }
+        /* Contenedor del logo */
+        .logo-wrapper { display: flex; justify-content: flex-end; margin-bottom: 6px; }
+        .logo-img { max-width: 110px; height: auto; display: block; object-fit: contain; }
         
-        h1 { font-size: 1.35rem; color: #0f172a; font-weight: 700; margin-bottom: 4px; }
-        .subtitle { font-size: 0.9rem; color: #334155; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
-        .description { font-size: 0.78rem; color: #64748b; line-height: 1.35; margin-bottom: 14px; }
+        h1 { font-size: 1.2rem; color: #0f172a; font-weight: 700; margin-bottom: 2px; }
+        .subtitle { font-size: 0.82rem; color: #334155; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
+        .description { font-size: 0.72rem; color: #64748b; line-height: 1.2; margin-bottom: 8px; }
         
         /* Contactos */
-        .contact-info { display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; border-top: 1px solid #e2e8f0; padding-top: 12px; }
-        .contact-info a { color: #334155; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; }
-        .contact-icon { font-size: 0.9rem; opacity: 0.8; }
+        .contact-info { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+        .contact-info a { color: #334155; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+        .contact-icon { font-size: 0.85rem; opacity: 0.8; }
         
-        .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin-bottom: 10px; border: none; }
+        /* Botones de acción */
+        .btn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 10px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 6px; border: none; }
         .btn-main { background: #1e293b; color: #ffffff; }
         .btn-whatsapp { background: #25d366; color: #ffffff; }
-        .grid-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-        .btn-secondary { background: #f1f5f9; color: #1e293b; font-size: 0.88rem; padding: 12px; border: 1px solid #e2e8f0; }
+        .grid-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+        .btn-secondary { background: #f1f5f9; color: #1e293b; font-size: 0.78rem; padding: 8px; border: 1px solid #e2e8f0; margin-bottom: 0; }
         
-        .qr-section { text-align: center; border-top: 1px solid #f1f5f9; padding-top: 16px; }
-        .qr-title { font-size: 0.7rem; color: #64748b; letter-spacing: 1px; font-weight: 700; margin-bottom: 12px; }
-        .qr-box { background: white; padding: 12px; border: 1px solid #e2e8f0; border-radius: 16px; display: inline-block; }
-        .qr-box img { width: 140px; height: 140px; display: block; }
-        .footer-text { font-size: 0.7rem; color: #94a3b8; margin-top: 8px; }
+        /* Sección del código QR */
+        .qr-section { text-align: center; border-top: 1px solid #f1f5f9; padding-top: 8px; }
+        .qr-title { font-size: 0.62rem; color: #64748b; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+        .qr-box { background: white; padding: 6px; border: 1px solid #e2e8f0; border-radius: 12px; display: inline-block; }
+        .qr-box img { width: 95px; height: 95px; display: block; }
+        .footer-text { font-size: 0.62rem; color: #94a3b8; margin-top: 4px; }
     </style>
 </head>
 <body>
